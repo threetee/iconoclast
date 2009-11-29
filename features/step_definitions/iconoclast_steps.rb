@@ -14,5 +14,9 @@ When /I call the Iconoclast version method/ do
 end
 
 Then /the result should be (.*)/ do |result|
-  @result.should == result.to_s
+  # RSpec way
+#  @result.should == result.to_s
+
+  # Test::Unit/Shoulda way
+  assert_match /#{result}/m, @result
 end

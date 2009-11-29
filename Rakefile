@@ -11,7 +11,8 @@ begin
     gem.email = "e@wb.com"
     gem.homepage = "http://github.com/threetee/iconoclast"
     gem.authors = ["Eric Dennis"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "shoulda", ">= 0"
+    gem.add_development_dependency "cucumber", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 
@@ -42,7 +43,19 @@ end
 
 task :test => :check_dependencies
 
-task :default => :test
+begin
+  require 'cucumber/rake/task'
+  Cucumber::Rake::Task.new(:features)
+
+  task :features => :check_dependencies
+rescue LoadError
+  task :features do
+    abort "Cucumber is not available. In order to run features, you must: sudo gem install cucumber"
+  end
+end
+
+#task :default => :test
+task :default => [:test,:features]
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
