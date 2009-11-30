@@ -2,6 +2,10 @@
 
 Description goes here.
 
+Call like this:
+<%= IconHelper.icon 'key' %>
+http://robots.thoughtbot.com/post/159808152/disambiguate-rails-helpers
+
 == Note on Patches/Pull Requests
  
 * Fork the project.

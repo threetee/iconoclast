@@ -9,6 +9,22 @@ unless defined? Iconoclast
     VERSION = File.open(File.join(LIBPATH, '..', 'version')).gets
     # :startdoc:
 
+    module ControllerMixin
+
+      def iconic(*args, &block)
+        args.flatten.each do |arg|
+          case arg
+            when String, Symbol
+              file_name = 'iconoclast/' + arg.to_s.underscore
+              helper(file_name)
+            else
+              helper(arg, &block)
+          end
+        end
+      end
+
+    end
+
     # Returns the version string for the library.
     #
     def self.version
@@ -57,12 +73,16 @@ unless defined? Iconoclast
       search_me = ::File.expand_path(
           ::File.join(::File.dirname(fname), dir, '**', '*.rb'))
 
-      Dir.glob(search_me).sort.each {|rb| require rb}
+      Dir.glob(search_me).sort.each {|rb| print "#{rb}\n"; require rb}
     end
 
   end
 
   require 'rubygems'
   require 'main'
+  # Two ways of doing the same (or a similar) thing:
+  # One
+#  Dir.glob(File.join(Iconoclast.libpath, 'iconoclast', '*_helper.rb')).each { |helper| require helper }
+  # Two
   Iconoclast.require_all_libs_relative_to __FILE__
 end  # unless defined?

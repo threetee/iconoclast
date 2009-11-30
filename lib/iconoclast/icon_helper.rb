@@ -8,7 +8,7 @@ module Iconoclast
     #    <%= icon :information, "Information icon", :border => 0 %>
     # will generate:
     #    <img src="../icons/information.png" alt="Information icon" border="0" />
-    def icon(name, alt = nil, opts = {})
+    def self.icon(name, alt = nil, opts = {})
       opts[:border] ||= 0
       opts[:align] ||= "bottom"
       opts[:alt] ||= alt

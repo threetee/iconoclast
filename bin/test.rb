@@ -14,7 +14,7 @@ Main do
     print Iconoclast.libpath + "\n"
     print Iconoclast.path + "\n"
     
-    print Iconoclast::IconHelper.icon("test")
+    print Iconoclast::IconHelper::icon("test")
 #    Iconoclast::IconHelper.icon("test")
   end
 end
