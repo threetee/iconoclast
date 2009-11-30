@@ -3,19 +3,27 @@ require 'helper'
 class TestIconoclast < Test::Unit::TestCase
   # Tests:
   # 1. Iconoclast::version method should return something
-  # 2. Iconoclast::icons method should return 1000 files for the famfamfam/silk icon set
-  # 3. Iconoclast::icon_names method should return 1000 files for the famfamfam/silk icon set
+  # 2. Iconoclast::icons method should return the correct number of files for each icon set
+  # 3. Iconoclast::icon_names method should return the correct number of files for each icon set
+  # 4. Iconoclast::libpath method should return something
+  # 5. Iconoclast::path method should return something
   
   context "The iconoclast gem" do
     #setup do
     #end
     
-    should "have a version" do
+    should "return a version" do
       assert Iconoclast.version
     end
     
-    should "have a libpath" do
+    should "return a libpath" do
       assert Iconoclast.libpath
+      assert Iconoclast.libpath('/blarg')
+    end
+    
+    should "return a path" do
+      assert Iconoclast.path
+      assert Iconoclast.path('/blarg')
     end
     
     context "with the famfamfam provider" do
