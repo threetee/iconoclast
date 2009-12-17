@@ -16,6 +16,7 @@ unless defined? Iconoclast
           case arg
             when String, Symbol
               file_name = 'iconoclast/' + arg.to_s.underscore
+              print "setting up helper for file_name = #{file_name}"
               helper(file_name)
             else
               helper(arg, &block)
@@ -35,9 +36,7 @@ unless defined? Iconoclast
       options[:provider] ||= 'famfamfam'
       options[:set] ||= 'silk'
       options[:format] ||= 'png'
-#      print options.inspect
       globpath = ::File.join(libpath, 'iconoclast/icons', options[:provider], options[:set], options[:format], '*')
-#      print "#{globpath}\n"
       Dir[globpath]
     end
 
@@ -82,7 +81,7 @@ unless defined? Iconoclast
   require 'main'
   # Two ways of doing the same (or a similar) thing:
   # One
-#  Dir.glob(File.join(Iconoclast.libpath, 'iconoclast', '*_helper.rb')).each { |helper| require helper }
+  Dir.glob(File.join(Iconoclast.libpath, 'iconoclast', '*_helper.rb')).each { |helper| require helper }
   # Two
-  Iconoclast.require_all_libs_relative_to __FILE__
+#  Iconoclast.require_all_libs_relative_to __FILE__
 end  # unless defined?

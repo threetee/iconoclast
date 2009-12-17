@@ -1,4 +1,4 @@
-require 'helper'
+require 'test_helper'
 
 class TestIconoclast < Test::Unit::TestCase
   # Tests:

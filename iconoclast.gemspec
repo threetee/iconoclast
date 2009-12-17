@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
      "features/support/env.rb",
      "features/version.feature",
      "iconoclast.gemspec",
+     "init.rb",
      "lib/iconoclast.rb",
      "lib/iconoclast/icon_helper.rb",
      "lib/iconoclast/icons/famfamfam/flags/gif/ad.gif",
@@ -1527,6 +1528,7 @@ Gem::Specification.new do |s|
      "lib/iconoclast/icons/famfamfam/silk/png/zoom_in.png",
      "lib/iconoclast/icons/famfamfam/silk/png/zoom_out.png",
      "lib/tasks/cucumber.rake",
+     "rails/init.rb",
      "tasks/iconoclast.rake",
      "test/helper.rb",
      "test/test_iconoclast.rb"
