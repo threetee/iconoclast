@@ -35,27 +35,58 @@ Main do
       default File.expand_path("." + "/public/images")
     end
   end
+  
+  mixin :collection_option do
+    option "collection" do
+      argument_optional
+      attribute
+      default 'famfamfam'
+    end
+  end
+  
+  mixin :set_option do
+    option "set" do
+      argument_optional
+      attribute
+      default 'silk'
+    end
+  end
+
+  mixin :format_option do
+    option "format" do
+      argument_optional
+      attribute
+      default 'png'
+    end
+  end
 
   mode "remove" do
     mixin :path_argument
+    mixin :collection_option
+    mixin :set_option
+    mixin :format_option
     run do
-      Iconoclast.remove_icons path
+      Iconoclast.remove_icons path, {:collection => collection, :set => set, :format => format}
     end
   end
 
   mode "refresh" do
     mixin :path_argument
+    mixin :collection_option
+    mixin :set_option
+    mixin :format_option
     run do
-      Iconoclast.remove_icons path
-      Iconoclast.install_icons path
+      Iconoclast.remove_icons path, {:collection => collection, :set => set, :format => format}
+      Iconoclast.install_icons path, {:collection => collection, :set => set, :format => format}
     end
   end
 
   mixin :path_argument
+  mixin :collection_option
+  mixin :set_option
+  mixin :format_option
 
   run do
-    Iconoclast.install_icons path
+    Iconoclast.install_icons path, {:collection => collection, :set => set, :format => format}
   end
-end
-
 end

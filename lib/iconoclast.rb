@@ -34,21 +34,32 @@ unless defined? Iconoclast
 
     # Installs the specified icon set into the specified directory
     def self.install_icons( dest_dir, opts = {} )
+      opts[:provider] ||= 'famfamfam'
+      opts[:set] ||= 'silk'
+      opts[:format] ||= 'png'
+      
+      action_dir = File.join(dest_dir, 'icons', opts[:provider], opts[:set], opts[:format])
       puts "=="*45
-      puts "making dir #{dest_dir}" unless File.exists? dest_dir
-      puts "copying icons to #{dest_dir}"
+      puts "making dir #{action_dir}" unless File.exists? action_dir
+      puts "copying icons to #{action_dir}"
       puts "=="*45
-      FileUtils.mkdir_p dest_dir unless File.exists? dest_dir
-      FileUtils.cp(Famfamfam.icons(opts), dest_dir) 
+      FileUtils.mkdir_p action_dir unless File.exists? action_dir
+      FileUtils.cp(Iconoclast.icons(opts), action_dir) 
     end
 
     def self.remove_icons( dest_dir, opts = {} )
+      opts[:provider] ||= 'famfamfam'
+      opts[:set] ||= 'silk'
+      opts[:format] ||= 'png'
+      
+      action_dir = File.join(dest_dir, 'icons', opts[:provider], opts[:set], opts[:format])
       puts "=="*45
-      puts "removing icons from #{dest_dir}"
+      puts "removing icons from #{action_dir}"
       puts "=="*45
       icons = icon_names(opts)
-      icons.collect!{|icon| dest_dir + "/" + icon}
+      icons.collect!{|icon| action_dir + "/" + icon}
       FileUtils.rm(icons)
+      # TODO: remove any empty directories in the structure
     end
 
     def self.icons ( opts = {} )
