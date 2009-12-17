@@ -2,32 +2,32 @@
 
 The Iconoclast gem provides an easy way to install iconsets (currently the Famfamfam 'silk' and 'flags' iconsets are included).
 
-== Installation
+= Installation
 
 The iconoclast gem is hosted on gemcutter.org, so you will first need to configure your gem system to pull from gemcutter:
-$ gem install gemcutter
-$ gem tumble
+  $ gem install gemcutter
+  $ gem tumble
 
 Once you have configured gemcutter:
-$ gem install iconoclast
+  $ gem install iconoclast
 
-== Usage
+= Usage
 
 Install iconsets into your rails app's public directory:
 
-$ cd /path/to/railsapp
-$ iconify
+  $ cd /path/to/railsapp
+  $ iconify
 
 Running iconify without any arguments installs the famfamfam silk iconset by default. You can specify additional iconsets as well:
-$ iconify --set=flags
+  $ iconify --set=flags
 
 Once your icons are installed, activate the helper methods by adding the following line to your application_controller.rb:
-helper Iconoclast::IconHelper
+  helper Iconoclast::IconHelper
 
 Then use the icons in your views:
-<%= icon 'name' %>
-<%= icon 'name', 'alt text' %>
-<%= icon 'name', 'alt text', { :border => 1 } %>
+  <%= icon 'name' %>
+  <%= icon 'name', 'alt text' %>
+  <%= icon 'name', 'alt text', { :border => 1 } %>
 
 == Copyright
 
