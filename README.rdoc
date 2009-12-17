@@ -2,9 +2,13 @@
 
 Description goes here.
 
-Call like this:
-<%= IconHelper.icon 'key' %>
-http://robots.thoughtbot.com/post/159808152/disambiguate-rails-helpers
+In application_controller.rb:
+helper Iconoclast::IconHelper
+
+In your views:
+<%= icon 'name' %>
+<%= icon 'name', 'alt text' %>
+<%= icon 'name', 'alt text', { :border => 1 } %>
 
 == Note on Patches/Pull Requests
  
