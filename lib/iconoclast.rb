@@ -32,16 +32,35 @@ unless defined? Iconoclast
       VERSION
     end
 
-    def self.icons ( options = {} )
-      options[:provider] ||= 'famfamfam'
-      options[:set] ||= 'silk'
-      options[:format] ||= 'png'
-      globpath = ::File.join(libpath, 'iconoclast/icons', options[:provider], options[:set], options[:format], '*')
+    # Installs the specified icon set into the specified directory
+    def self.install_icons( dest_dir, opts = {} )
+      puts "=="*45
+      puts "making dir #{dest_dir}" unless File.exists? dest_dir
+      puts "copying icons to #{dest_dir}"
+      puts "=="*45
+      FileUtils.mkdir_p dest_dir unless File.exists? dest_dir
+      FileUtils.cp(Famfamfam.icons(opts), dest_dir) 
+    end
+
+    def self.remove_icons( dest_dir, opts = {} )
+      puts "=="*45
+      puts "removing icons from #{dest_dir}"
+      puts "=="*45
+      icons = icon_names(opts)
+      icons.collect!{|icon| dest_dir + "/" + icon}
+      FileUtils.rm(icons)
+    end
+
+    def self.icons ( opts = {} )
+      opts[:provider] ||= 'famfamfam'
+      opts[:set] ||= 'silk'
+      opts[:format] ||= 'png'
+      globpath = ::File.join(libpath, 'iconoclast/icons', opts[:provider], opts[:set], opts[:format], '*')
       Dir[globpath]
     end
 
-    def self.icon_names ( options = {} )
-      icons = self.icons(options)
+    def self.icon_names ( opts = {} )
+      icons = self.icons(opts)
       icons.collect!{|icon| File.basename(icon)}
     end
   
@@ -81,7 +100,7 @@ unless defined? Iconoclast
   require 'main'
   # Two ways of doing the same (or a similar) thing:
   # One
-  Dir.glob(File.join(Iconoclast.libpath, 'iconoclast', '*_helper.rb')).each { |helper| require helper }
+#  Dir.glob(File.join(Iconoclast.libpath, 'iconoclast', '*_helper.rb')).each { |helper| require helper }
   # Two
-#  Iconoclast.require_all_libs_relative_to __FILE__
+  Iconoclast.require_all_libs_relative_to __FILE__
 end  # unless defined?

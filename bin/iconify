@@ -12,19 +12,19 @@ Main do
   EOS
 
   examples <<-EOS
-    To add famfamfam icons to your app
+    To add icons to your app
 
     	cd /your/rails/app/dir  
 
-    	famify #copies icons to public/images
+    	iconify #copies icons to public/images
 
-    	famify my_images/icons #copies icons to /your/rails/apps/dir/myimages/icons
+    	iconify my_images/icons #copies icons to /your/rails/apps/dir/myimages/icons
 
-    To remove famfamfam icons from your app (and only famfamfam icons)
+    To remove icons from your app (and only famfamfam icons)
 
-    	famify remove #removes only famfamfam icons from public/images
+    	iconify remove #removes only famfamfam icons from public/images
 
-    	famify remove my_images/icons #removes only famfamfam icons from /your/rails/apps/dir/myimages/icons
+    	iconify remove my_images/icons #removes only famfamfam icons from /your/rails/apps/dir/myimages/icons
 
   EOS
 
@@ -47,14 +47,14 @@ Main do
     mixin :path_argument
     run do
       Iconoclast.remove_icons path
-      Iconoclast.copy_icons path
+      Iconoclast.install_icons path
     end
   end
 
   mixin :path_argument
 
   run do
-    Iconoclast.copy_icons path
+    Iconoclast.install_icons path
   end
 end
 

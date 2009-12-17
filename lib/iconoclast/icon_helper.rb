@@ -9,13 +9,22 @@ module Iconoclast
     # will generate:
     #    <img src="../icons/information.png" alt="Information icon" border="0" />
     def icon(name, alt = nil, opts = {})
-      print "in icon_tag method"
       # Set up some defaults
+      collection = 'famfamfam'
+      family = 'silk'
+      format = 'png'
+      
+      # Replace the defaults if specified
+      ['collection', 'family', 'format'].each do |var|
+        eval("#{var} = opts[:#{var}] unless opts[:#{var}].nil?")
+        eval("opts.delete #{var}")
+      end
+      
       opts[:border] ||= 0
       opts[:align] ||= "bottom"
       opts[:alt] ||= alt
 
-      image_tag "icons/#{name}.png", opts
+      image_tag "icons/#{collection}/#{family}/#{format}/#{name}.png", opts
     end
   end
   
