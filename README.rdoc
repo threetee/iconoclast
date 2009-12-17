@@ -1,25 +1,39 @@
 = iconoclast
 
-Description goes here.
+The Iconoclast gem provides an easy way to install iconsets (currently the Famfamfam 'silk' and 'flags' iconsets are included).
 
-In application_controller.rb:
+== Installation
+
+The iconoclast gem is hosted on gemcutter.org, so you will first need to configure your gem system to pull from gemcutter:
+$ gem install gemcutter
+$ gem tumble
+
+Once you have configured gemcutter:
+$ gem install iconoclast
+
+== Usage
+
+Install iconsets into your rails app's public directory:
+
+$ cd /path/to/railsapp
+$ iconify
+
+Running iconify without any arguments installs the famfamfam silk iconset by default. You can specify additional iconsets as well:
+$ iconify --set=flags
+
+Once your icons are installed, activate the helper methods by adding the following line to your application_controller.rb:
 helper Iconoclast::IconHelper
 
-In your views:
+Then use the icons in your views:
 <%= icon 'name' %>
 <%= icon 'name', 'alt text' %>
 <%= icon 'name', 'alt text', { :border => 1 } %>
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
-
 == Copyright
 
 Copyright (c) 2009 Eric Dennis. See LICENSE for details.
+
+This package also contains iconsets from Famfamfam:
+http://www.famfamfam.com/lab/icons/
+
+The Famfamfam iconsets are provided under the Creative Commons Attribution 2.5 License (http://creativecommons.org/licenses/by/2.5/).
