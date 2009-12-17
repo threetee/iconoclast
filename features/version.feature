@@ -5,4 +5,4 @@ Feature: Version
   
   Scenario: Get application version
     When I call the Iconoclast version method
-    Then the result should be 0.1.0
+    Then the result should be 0.1.1
