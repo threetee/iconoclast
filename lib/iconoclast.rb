@@ -16,7 +16,6 @@ unless defined? Iconoclast
           case arg
             when String, Symbol
               file_name = 'iconoclast/' + arg.to_s.underscore
-              print "setting up helper for file_name = #{file_name}"
               helper(file_name)
             else
               helper(arg, &block)
