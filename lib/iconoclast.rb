@@ -6,7 +6,7 @@ unless defined? Iconoclast
     # :stopdoc:
     LIBPATH = ::File.expand_path(::File.dirname(__FILE__)) + ::File::SEPARATOR
     PATH = ::File.dirname(LIBPATH) + ::File::SEPARATOR
-    VERSION = File.open(File.join(LIBPATH, '..', 'version')).gets
+    VERSION = File.open(File.join(LIBPATH, '..', 'VERSION')).gets
     # :startdoc:
 
     module ControllerMixin
