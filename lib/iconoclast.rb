@@ -107,7 +107,6 @@ unless defined? Iconoclast
   end
 
   require 'rubygems'
-  require 'main'
   # Two ways of doing the same (or a similar) thing:
   # One
 #  Dir.glob(File.join(Iconoclast.libpath, 'iconoclast', '*_helper.rb')).each { |helper| require helper }
